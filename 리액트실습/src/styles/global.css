@@ -1,0 +1,220 @@
+/* ==================== GLOBAL STYLES (Cyberpunk Premium) ==================== */
+
+/* 1. Variables & Reset */
+:root {
+    /* Colors */
+    --cyber-bg: #050510;
+    --cyber-bg-secondary: #0a0a1f;
+    --cyber-cyan: #00f3ff;
+    --cyber-pink: #bc13fe;
+    --cyber-purple: #7000ff;
+    --cyber-text: #e0e0e0;
+    --cyber-text-dim: #707090;
+
+    /* Fonts */
+    --font-header: 'Orbitron', 'Courier New', monospace;
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    /* Effects */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-cyan: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+    --neon-pink: 0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cyber-bg);
+    color: var(--cyber-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 2. Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 3. Utility Classes (Atoms) */
+
+/* Layout & Motion */
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Typography */
+.text-header {
+    font-family: var(--font-header);
+}
+
+.text-title {
+    font-family: var(--font-title);
+}
+
+.text-body {
+    font-family: var(--font-body);
+}
+
+.neon-text-cyan {
+    color: var(--cyber-cyan);
+    text-shadow: var(--neon-cyan);
+}
+
+.neon-text-pink {
+    color: var(--cyber-pink);
+    text-shadow: var(--neon-pink);
+}
+
+.glitch-text {
+    position: relative;
+    /* Glitch effect can be added here if needed, simple placeholder for now */
+}
+
+/* Buttons */
+.btn-cyber {
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-header);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--cyber-cyan);
+    background: transparent;
+    color: var(--cyber-cyan);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-cyber:hover:not(:disabled) {
+    background: var(--cyber-cyan);
+    color: var(--cyber-bg);
+    box-shadow: var(--neon-cyan);
+    transform: translateY(-2px);
+}
+
+.btn-cyber:disabled {
+    border-color: var(--cyber-text-dim);
+    color: var(--cyber-text-dim);
+    cursor: not-allowed;
+}
+
+.btn-cyber-pink {
+    border-color: var(--cyber-pink);
+    color: var(--cyber-pink);
+}
+
+.btn-cyber-pink:hover:not(:disabled) {
+    background: var(--cyber-pink);
+    color: white;
+    box-shadow: var(--neon-pink);
+}
+
+/* Inputs & Selects */
+.input-cyber {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--cyber-cyan);
+    color: var(--cyber-text);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-cyber:focus {
+    border-color: var(--cyber-pink);
+    box-shadow: 0 0 10px rgba(188, 19, 254, 0.3);
+}
+
+/* 4. Background Effects */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.1) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, transparent 0, transparent 1px, rgba(0, 243, 255, 0.03) 1px, rgba(0, 243, 255, 0.03) 2px);
+    background-size: 100% 100%, 100% 4px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 5. Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cyber-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cyber-purple);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-pink);
+}

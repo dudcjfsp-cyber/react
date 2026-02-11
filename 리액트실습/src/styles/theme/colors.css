@@ -1,0 +1,15 @@
+/* ==================== TRON THEME COLORS ==================== */
+/* 색상 변수 정의 */
+:root {
+    --cyber-bg: #000a14;
+    --cyber-bg-secondary: #0a1a2e;
+    --cyber-purple: #00d4ff;
+    --cyber-purple-dark: #0096c7;
+    --cyber-pink: #00f5ff;
+    --cyber-pink-light: #33f7ff;
+    --cyber-cyan: #00f5ff;
+    --cyber-green: #00ff41;
+    --cyber-green-glow: rgba(0, 255, 65, 0.5);
+    --cyber-text: #e0f5ff;
+    --cyber-text-dim: #80c0d0;
+}

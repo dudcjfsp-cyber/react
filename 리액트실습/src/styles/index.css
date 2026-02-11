@@ -1,0 +1,4 @@
+/* 스타일 진입점 - 모든 스타일 import */
+@import './theme/colors.css';
+@import './theme/animations.css';
+@import './global.css';
