@@ -2,3 +2,31 @@
 @import './theme/colors.css';
 @import './theme/animations.css';
 @import './global.css';
+
+/*@keyframes pulse-glow {
+    0% { box-shadow: 0 0 5px #ff00ff; }
+    50% { box-shadow: 0 0 20px #ff00ff, 0 0 10px #00ffff; }
+    100% { box-shadow: 0 0 5px #ff00ff; }
+}
+*/
+
+/* [NEW] 홀로그램 스캔 라인 애니메이션 */
+@keyframes scan {
+    0% {
+        top: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}

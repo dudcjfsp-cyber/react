@@ -1,23 +1,40 @@
-// src/components/layout/NavBar.tsx
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { playWhooshSound } from '../../effects/audio/soundEffects';
+import { useAuth } from '../../context/AuthContext';
 
 export default function NavBar() {
+    const { isLoggedIn, logout, user } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        if (confirm("Logout?")) {
+            logout();
+            navigate('/login');
+        }
+    };
+
     return (
         <nav style={{ padding: '1rem 0' }}>
+            <div style={{ textAlign: 'center', marginBottom: '1rem', color: '#0ff', fontSize: '0.9rem' }}>
+                {isLoggedIn && user ? `WELCOME, OPERATOR [${user.name}]` : 'GUEST ACCESS'}
+            </div>
             <ul style={{
                 listStyle: 'none',
                 display: 'flex',
                 gap: '2rem',
                 padding: 0,
                 justifyContent: 'center',
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                alignItems: 'center'
             }}>
                 {[
                     { path: '/', label: '🏠 HOME' },
                     { path: '/team', label: '😎 TEAM' },
                     { path: '/weather', label: '🌤️ WEATHER' },
-                    { path: '/fashion', label: '👗 FASHION' }
+                    { path: '/fashion', label: '👗 FASHION' },
+                    { path: '/courses', label: '🎓 COURSES' },
+                    { path: '/shop', label: '🛍️ SHOP' },
+                    { path: '/manager', label: '👮 MANAGER' }
                 ].map((item) => (
                     <li key={item.path}>
                         <NavLink
@@ -56,6 +73,27 @@ export default function NavBar() {
                         </NavLink>
                     </li>
                 ))}
+
+                {isLoggedIn && (
+                    <li>
+                        <button
+                            onClick={handleLogout}
+                            style={{
+                                background: 'transparent',
+                                color: '#ff4444',
+                                border: '1px solid #ff4444',
+                                padding: '0.8rem 1.5rem',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontWeight: 'bold',
+                                fontFamily: 'var(--font-header)',
+                                letterSpacing: '2px'
+                            }}
+                        >
+                            LOGOUT
+                        </button>
+                    </li>
+                )}
             </ul>
         </nav>
     );
